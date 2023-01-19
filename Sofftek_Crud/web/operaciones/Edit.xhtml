@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="OperacionesEditDlg" widgetVar="OperacionesEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditOperacionesTitle}">
+            <h:form id="OperacionesEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{operacionesController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditOperacionesLabel_identificacionConducto}" for="identificacionConducto" />
+                        <p:inputText id="identificacionConducto" value="#{operacionesController.selected.identificacionConducto}" title="#{bundle.EditOperacionesTitle_identificacionConducto}" required="true" requiredMessage="#{bundle.EditOperacionesRequiredMessage_identificacionConducto}"/>
+                        <p:outputLabel value="#{bundle.EditOperacionesLabel_nombreConducto}" for="nombreConducto" />
+                        <p:inputText id="nombreConducto" value="#{operacionesController.selected.nombreConducto}" title="#{bundle.EditOperacionesTitle_nombreConducto}" required="true" requiredMessage="#{bundle.EditOperacionesRequiredMessage_nombreConducto}"/>
+                        <p:outputLabel value="#{bundle.EditOperacionesLabel_placaVehiculo}" for="placaVehiculo" />
+                        <p:inputText id="placaVehiculo" value="#{operacionesController.selected.placaVehiculo}" title="#{bundle.EditOperacionesTitle_placaVehiculo}" required="true" requiredMessage="#{bundle.EditOperacionesRequiredMessage_placaVehiculo}"/>
+                        <p:outputLabel value="#{bundle.EditOperacionesLabel_marcaVehiculo}" for="marcaVehiculo" />
+                        <p:inputText id="marcaVehiculo" value="#{operacionesController.selected.marcaVehiculo}" title="#{bundle.EditOperacionesTitle_marcaVehiculo}" />
+                        <p:outputLabel value="#{bundle.EditOperacionesLabel_modeloVehiculo}" for="modeloVehiculo" />
+                        <p:inputText id="modeloVehiculo" value="#{operacionesController.selected.modeloVehiculo}" title="#{bundle.EditOperacionesTitle_modeloVehiculo}" />
+                        <p:outputLabel value="#{bundle.EditOperacionesLabel_operacionescol}" for="operacionescol" />
+                        <p:inputText id="operacionescol" value="#{operacionesController.selected.operacionescol}" title="#{bundle.EditOperacionesTitle_operacionescol}" />
+                        <p:outputLabel value="#{bundle.EditOperacionesLabel_usuarioIdusuario}" for="usuarioIdusuario" />
+                        <p:inputText id="usuarioIdusuario" value="#{operacionesController.selected.usuarioIdusuario}" title="#{bundle.EditOperacionesTitle_usuarioIdusuario}" required="true" requiredMessage="#{bundle.EditOperacionesRequiredMessage_usuarioIdusuario}"/>
+                        <p:outputLabel value="#{bundle.EditOperacionesLabel_estadoIdestado}" for="estadoIdestado" />
+                        <p:inputText id="estadoIdestado" value="#{operacionesController.selected.estadoIdestado}" title="#{bundle.EditOperacionesTitle_estadoIdestado}" required="true" requiredMessage="#{bundle.EditOperacionesRequiredMessage_estadoIdestado}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{operacionesController.update}" value="#{bundle.Save}" update="display,:OperacionesListForm:datalist,:growl" oncomplete="handleSubmit(args, 'OperacionesEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="OperacionesEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

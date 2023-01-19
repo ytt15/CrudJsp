@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="OperacionesCreateDlg" widgetVar="OperacionesCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateOperacionesTitle}">
+            <h:form id="OperacionesCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{operacionesController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateOperacionesLabel_identificacionConducto}" for="identificacionConducto" />
+                        <p:inputText id="identificacionConducto" value="#{operacionesController.selected.identificacionConducto}" title="#{bundle.CreateOperacionesTitle_identificacionConducto}" required="true" requiredMessage="#{bundle.CreateOperacionesRequiredMessage_identificacionConducto}"/>
+                        <p:outputLabel value="#{bundle.CreateOperacionesLabel_nombreConducto}" for="nombreConducto" />
+                        <p:inputText id="nombreConducto" value="#{operacionesController.selected.nombreConducto}" title="#{bundle.CreateOperacionesTitle_nombreConducto}" required="true" requiredMessage="#{bundle.CreateOperacionesRequiredMessage_nombreConducto}"/>
+                        <p:outputLabel value="#{bundle.CreateOperacionesLabel_placaVehiculo}" for="placaVehiculo" />
+                        <p:inputText id="placaVehiculo" value="#{operacionesController.selected.placaVehiculo}" title="#{bundle.CreateOperacionesTitle_placaVehiculo}" required="true" requiredMessage="#{bundle.CreateOperacionesRequiredMessage_placaVehiculo}"/>
+                        <p:outputLabel value="#{bundle.CreateOperacionesLabel_marcaVehiculo}" for="marcaVehiculo" />
+                        <p:inputText id="marcaVehiculo" value="#{operacionesController.selected.marcaVehiculo}" title="#{bundle.CreateOperacionesTitle_marcaVehiculo}" />
+                        <p:outputLabel value="#{bundle.CreateOperacionesLabel_modeloVehiculo}" for="modeloVehiculo" />
+                        <p:inputText id="modeloVehiculo" value="#{operacionesController.selected.modeloVehiculo}" title="#{bundle.CreateOperacionesTitle_modeloVehiculo}" />
+                        <p:outputLabel value="#{bundle.CreateOperacionesLabel_operacionescol}" for="operacionescol" />
+                        <p:inputText id="operacionescol" value="#{operacionesController.selected.operacionescol}" title="#{bundle.CreateOperacionesTitle_operacionescol}" />
+                        <p:outputLabel value="#{bundle.CreateOperacionesLabel_usuarioIdusuario}" for="usuarioIdusuario" />
+                        <p:inputText id="usuarioIdusuario" value="#{operacionesController.selected.usuarioIdusuario}" title="#{bundle.CreateOperacionesTitle_usuarioIdusuario}" required="true" requiredMessage="#{bundle.CreateOperacionesRequiredMessage_usuarioIdusuario}"/>
+                        <p:outputLabel value="#{bundle.CreateOperacionesLabel_estadoIdestado}" for="estadoIdestado" />
+                        <p:inputText id="estadoIdestado" value="#{operacionesController.selected.estadoIdestado}" title="#{bundle.CreateOperacionesTitle_estadoIdestado}" required="true" requiredMessage="#{bundle.CreateOperacionesRequiredMessage_estadoIdestado}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{operacionesController.create}" value="#{bundle.Save}" update="display,:OperacionesListForm:datalist,:growl" oncomplete="handleSubmit(args,'OperacionesCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="OperacionesCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
